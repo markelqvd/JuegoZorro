@@ -26,10 +26,10 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
@@ -58,19 +58,19 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Vector1_318a43b5962943619b5e4db9a38fb63b: 0.7
-    - Vector1_327103f243bb4e9aba569a3b4cd596f3: 0.35
+    - Vector1_318a43b5962943619b5e4db9a38fb63b: 0.98
+    - Vector1_327103f243bb4e9aba569a3b4cd596f3: 0.4
     - Vector1_3b5cbd573d014ed4806b84691c40b057: 0.1
-    - Vector1_481c069d0d354581986f128b7e834072: 0.99
+    - Vector1_481c069d0d354581986f128b7e834072: 0.67
     - Vector1_607500214d0f48ccad7a79e4bb30bd90: 0.12
-    - Vector1_9c966732dd5446dfb32119284d16065b: 1
-    - Vector1_a491f79ddbd84729aac63b455fd483cf: 2.07
-    - Vector1_b505156c8df34fb3b222788082b37666: 0.8
+    - Vector1_9c966732dd5446dfb32119284d16065b: 11
+    - Vector1_a491f79ddbd84729aac63b455fd483cf: 0.26
+    - Vector1_b505156c8df34fb3b222788082b37666: 0.29
     - Vector1_c4aff908c77f40e3803835b2906f7d4c: 4.55
-    - Vector1_d97aef9ea40a4405930491bd036da62d: 2.7
+    - Vector1_d97aef9ea40a4405930491bd036da62d: 1.46
     - Vector1_e0aafbc628f345308b44c371b65d7e88: 0.1
-    - Vector1_e92a66407e2d466dbbd688651f505db3: 0.4
-    - Vector1_fd4e1850a0914ade828bcafcd2c831c4: 1
+    - Vector1_e92a66407e2d466dbbd688651f505db3: 0.32
+    - Vector1_fd4e1850a0914ade828bcafcd2c831c4: 0.1
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
@@ -78,5 +78,5 @@ Material:
     - Color_73ed74285a754a97916585df29e1e708: {r: 0.17528479, g: 0.3679245, b: 0.27987006, a: 0}
     - Color_9ca84b2bba994e9cbab8e6c47022f334: {r: 1, g: 1, b: 1, a: 0}
     - Color_ed1941b302ef4dc6bb5e9cab3958c9be: {r: 1, g: 1, b: 1, a: 0}
-    - Vector2_70e52fa9be644b7a985c1a0c376de7d7: {r: 0, g: 0.1, b: 0, a: 0}
+    - Vector2_70e52fa9be644b7a985c1a0c376de7d7: {r: 0, g: 0.01, b: 0, a: 0}
   m_BuildTextureStacks: []
