@@ -5,7 +5,7 @@ using UnityEngine;
 public class ZonaMuerte : MonoBehaviour
 {
     // Posición inicial para el respawn
-    public Vector3 puntoInicial = new Vector3(0f, 1f, 0f); // Ajusta esto a tus coordenadas iniciales
+    public Vector3 puntoInicial = new Vector3(-0.084f, 0.288f, 1.18f); // Ajusta esto a tus coordenadas iniciales
 
     void OnTriggerEnter(Collider other)
     {
