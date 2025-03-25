@@ -9,6 +9,10 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 5; // Fuerza del salto
     public LayerMask groundLayer; // Capa del suelo para verificar colisión
 
+    // Variables para doble salto
+    public bool doubleJumpActive = false;
+    private bool doubleJumpUsed = false;
+
     private Vector3 forward, right;
     private Rigidbody rb;
     private bool isGrounded;
@@ -44,10 +48,26 @@ public class PlayerController : MonoBehaviour
         // Verificar si el jugador está en el suelo
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f, groundLayer);
 
-        // Saltar si el jugador está en el suelo y presiona la tecla de salto
-        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+        // Si está en el suelo, se resetea el doble salto
+        if (isGrounded)
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            doubleJumpUsed = false;
+        }
+
+        // Manejo del salto
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (isGrounded)
+            {
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            }
+            else if (doubleJumpActive && !doubleJumpUsed)
+            {
+                // Opcional: Resetea la velocidad vertical para un salto más uniforme
+                rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                doubleJumpUsed = true;
+            }
         }
     }
 }
