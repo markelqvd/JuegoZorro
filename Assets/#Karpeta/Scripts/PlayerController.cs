@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Verificar si el jugador está en el suelo
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f, groundLayer);
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.3f, groundLayer);
 
         // Si está en el suelo, se resetea el doble salto
         if (isGrounded)
