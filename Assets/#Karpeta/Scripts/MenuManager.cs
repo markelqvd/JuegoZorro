@@ -13,16 +13,44 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
-        Time.timeScale = 1f; // Asegurarse de que el juego comienza sin estar pausado
-        menuInicio.SetActive(false);
+        Time.timeScale = 0f; // Asegurarse de que el juego comienza sin estar pausado
+        menuInicio.SetActive(true);
         menuOpciones.SetActive(false);
         menuPausa.SetActive(false);
         confirmacionSalida.SetActive(false);
-        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
-        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(menuInicio.GetComponentInChildren<Button>().gameObject);
+        //UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+        //UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(menuInicio.GetComponentInChildren<Button>().gameObject);
     
     }
+    void Update()
+    {
+        // Detectar si se presiona la tecla Escape
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!menuPausa.activeSelf) // Si el menú de pausa NO está activo, abrirlo
+            {
+                AbrirMenuPausa();
+            }
+            else // Si ya está activo, cerrarlo
+            {
+                CerrarMenuPausa();
+            }
+        }
+    }
 
+    public void AbrirMenuPausa()
+    {
+        menuPausa.SetActive(true);
+        Time.timeScale = 0f; // Pausar el juego
+        isPaused = true;
+    }
+
+    public void CerrarMenuPausa()
+    {
+        menuPausa.SetActive(false);
+        Time.timeScale = 1f; // Reanudar el juego
+        isPaused = false;
+    }
     public void ComenzarJuego()
     {
         Time.timeScale = 1f;
