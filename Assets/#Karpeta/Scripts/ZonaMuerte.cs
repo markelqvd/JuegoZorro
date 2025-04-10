@@ -19,6 +19,7 @@ public class ZonaMuerte : MonoBehaviour
 
     private void Morir(Transform jugador)
     {
+        GetComponent<PlayerDeathVideo>().Die();
         // Verifica si hay un checkpoint guardado
         if (PlayerPrefs.HasKey("CheckpointX"))
         {
