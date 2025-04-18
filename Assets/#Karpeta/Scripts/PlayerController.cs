@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private bool isGrounded;
 
+    public Animator animator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>(); // Obtener el Rigidbody
@@ -45,6 +47,9 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
 
+        bool isMoving = direction.magnitude > 0.1f;
+        animator.SetBool("isMoving", isMoving);
+
         // Verificar si el jugador está en el suelo
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.3f, groundLayer);
 
@@ -60,6 +65,7 @@ public class PlayerController : MonoBehaviour
             if (isGrounded)
             {
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                animator.SetBool("isJumping", true);
             }
             else if (doubleJumpActive && !doubleJumpUsed)
             {
@@ -67,6 +73,16 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 doubleJumpUsed = true;
+                animator.SetBool("isJumping", true);
+            }
+        }
+        else
+        {
+            // Resetea isJumping tras empezar la animación de salto
+            AnimatorStateInfo st = animator.GetCurrentAnimatorStateInfo(0);
+            if (st.IsName("Jump") || st.IsName("Jump 1"))
+            {
+                animator.SetBool("isJumping", false);
             }
         }
     }
