@@ -18,6 +18,11 @@ public class PlayerDeathVideo : MonoBehaviour
     private bool isDead = false;
     private bool readyToRespawn = false;
 
+    private void Start()
+    {
+        deathCanvas.SetActive(false);
+    }
+
     void Update()
     {
         if (isDead && readyToRespawn && Input.GetKeyDown(KeyCode.E))
