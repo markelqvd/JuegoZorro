@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class DoubleJumpPickup : MonoBehaviour
 {
+    public GameObject particulasEscultura1;
+    public CameraFollow cameraFollow;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -10,7 +13,8 @@ public class DoubleJumpPickup : MonoBehaviour
             if (player != null)
             {
                 player.doubleJumpActive = true;
-                // Opcional: Puedes mostrar algún efecto visual o notificar que se ha activado el doble salto.
+                cameraFollow.particulasEscultura1 = particulasEscultura1;
+                cameraFollow.EnfocarTemporalmente();
             }
             Destroy(gameObject);
         }
