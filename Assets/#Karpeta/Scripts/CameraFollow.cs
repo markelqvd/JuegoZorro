@@ -3,72 +3,59 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target; // Jugador
+    public Transform target;
     public Vector3 offset;
-    public GameObject particulasEscultura1;
 
-    public Transform focoTemporal; // Objeto a enfocar (puede ser un empty)
-    public float duracionMovimiento = 1.5f;
+    public Transform focoTemporal;
+    public GameObject particulasEscultura;
+    public float duracionMovimiento = 1f;
     public float tiempoEspera = 2f;
 
-    private bool siguiendoJugador = true;
-    private Vector3 posicionOriginal;
-
-    private void Start()
-    {
-        posicionOriginal = transform.position;
-    }
+    [HideInInspector]
+    public bool camaraOcupada = false;
 
     private void LateUpdate()
     {
-        if (siguiendoJugador && target != null)
-        {
+        if (!camaraOcupada)
             transform.position = target.position + offset;
-        }
     }
 
     public void EnfocarTemporalmente()
     {
-        if (!siguiendoJugador)
-            return;
-
-        StartCoroutine(MoverACentroDeInteres());
+        StartCoroutine(MoverCamaraTemporal());
     }
 
-    private IEnumerator MoverACentroDeInteres()
+    private IEnumerator MoverCamaraTemporal()
     {
-        siguiendoJugador = false;
+        camaraOcupada = true;
 
-        // Guardar posición actual
-        Vector3 desdePos = transform.position;
-        Vector3 hastaPos = focoTemporal.position + offset;
-        Quaternion rotacionFija = transform.rotation;
+        Vector3 origen = transform.position;
+        Vector3 destino = focoTemporal.position + offset;
 
-        // Mover a zona del objeto (sin rotar)
-        yield return StartCoroutine(Mover(transform, desdePos, hastaPos, rotacionFija));
-
-        if (particulasEscultura1 != null)
-            particulasEscultura1.SetActive(true);
-
-        // Esperar
-        yield return new WaitForSeconds(tiempoEspera);
-
-        // Volver al jugador
-        Vector3 regresoPos = target.position + offset;
-        yield return StartCoroutine(Mover(transform, transform.position, regresoPos, rotacionFija));
-
-        siguiendoJugador = true;
-    }
-
-    private IEnumerator Mover(Transform camara, Vector3 desdePos, Vector3 hastaPos, Quaternion rotacionFija)
-    {
         float t = 0;
-        while (t < 1)
+        while (t < duracionMovimiento)
         {
-            t += Time.deltaTime / duracionMovimiento;
-            camara.position = Vector3.Lerp(desdePos, hastaPos, t);
-            camara.rotation = rotacionFija; // Mantener la rotación isométrica
+            t += Time.deltaTime;
+            float lerpFactor = t / duracionMovimiento;
+            transform.position = Vector3.Lerp(origen, destino, lerpFactor);
             yield return null;
         }
+
+        if (particulasEscultura != null)
+            particulasEscultura.SetActive(true);
+
+        yield return new WaitForSeconds(tiempoEspera);
+
+        t = 0;
+        while (t < duracionMovimiento)
+        {
+            t += Time.deltaTime;
+            float lerpFactor = t / duracionMovimiento;
+            transform.position = Vector3.Lerp(destino, target.position + offset, lerpFactor);
+            yield return null;
+        }
+
+        camaraOcupada = false;
     }
 }
+

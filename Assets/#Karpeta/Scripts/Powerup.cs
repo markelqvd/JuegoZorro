@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DoubleJumpPickup : MonoBehaviour
 {
-    public GameObject particulasEscultura1;
+    public GameObject particulasEscultura;
     public CameraFollow cameraFollow;
 
     void OnTriggerEnter(Collider other)
@@ -13,7 +13,7 @@ public class DoubleJumpPickup : MonoBehaviour
             if (player != null)
             {
                 player.doubleJumpActive = true;
-                cameraFollow.particulasEscultura1 = particulasEscultura1;
+                cameraFollow.particulasEscultura = particulasEscultura;
                 cameraFollow.EnfocarTemporalmente();
             }
             Destroy(gameObject);
