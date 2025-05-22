@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,8 @@ public class Hoguera : MonoBehaviour
     public GameObject panelTeclaE;   // UI que muestra "Presiona E"
     public GameObject fuego;          // Hoguera encendida (partículas)
     public Animator fadeAnimator;     // Animator del fundido a negro
+    public GameObject textoGuardando;
+    public GameObject rueda;
 
     private bool puedeEncender = false;
     private bool encendida = false;
@@ -16,6 +19,8 @@ public class Hoguera : MonoBehaviour
     {
         panelTeclaE.SetActive(false);
         fuego.SetActive(false); // La hoguera comienza apagada
+        textoGuardando.SetActive(false);
+        rueda.SetActive(false);
     }
 
     void Update()
@@ -43,6 +48,11 @@ public class Hoguera : MonoBehaviour
         // Iniciamos el fundido a negro
         fadeAnimator.SetTrigger("Fundido");
 
+        yield return new WaitForSeconds(1f);
+
+        textoGuardando.SetActive(true);
+        rueda.SetActive(true);
+
         // Espera para que el fundido se ejecute (1.5 segundos)
         yield return new WaitForSeconds(1.5f);
 
@@ -52,6 +62,8 @@ public class Hoguera : MonoBehaviour
         // Espera el tiempo restante del fundido (1.5 segundos)
         yield return new WaitForSeconds(1.5f);
 
+        textoGuardando.SetActive(false);
+        rueda.SetActive(false);
         fadeAnimator.SetTrigger("Desfundido");
 
         // Vuelve a habilitar el movimiento del jugador

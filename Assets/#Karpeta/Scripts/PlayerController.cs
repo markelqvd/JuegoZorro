@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 4;
     public float rotationSpeed = 10;
     public float jumpForce = 5; // Fuerza del salto
-    public LayerMask groundLayer; // Capa del suelo para verificar colisiÛn
+    public LayerMask groundLayer; // Capa del suelo para verificar colisi√≥n
 
     // Variables para doble salto
     public bool doubleJumpActive = false;
@@ -18,6 +18,10 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
 
     public Animator animator;
+
+    // üßä Variables para hielo
+    private Vector3 currentVelocity = Vector3.zero;
+    private bool onIce = false;
 
     void Start()
     {
@@ -39,10 +43,23 @@ public class PlayerController : MonoBehaviour
 
         Vector3 direction = horizontalInput * right + verticalInput * forward;
 
+        // Movimiento + deslizamiento
+        if (onIce)
+        {
+            // Suaviza el cambio de velocidad y permite inercia
+            Vector3 targetVelocity = direction * speed;
+            currentVelocity = Vector3.Lerp(currentVelocity, targetVelocity, Time.deltaTime * 0.5f); // menos = m√°s resbaloso
+        }
+        else
+        {
+            currentVelocity = direction * speed;
+        }
+
+        transform.position += currentVelocity * Time.deltaTime;
+
+        // Rotaci√≥n solo si te est√°s moviendo
         if (direction.magnitude > 0.1f)
         {
-            transform.position += direction * speed * Time.deltaTime;
-
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
@@ -50,10 +67,10 @@ public class PlayerController : MonoBehaviour
         bool isMoving = direction.magnitude > 0.1f;
         animator.SetBool("isMoving", isMoving);
 
-        // Verificar si el jugador est· en el suelo
+        // Verificar si el jugador est√° en el suelo
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.3f, groundLayer);
 
-        // Si est· en el suelo, se resetea el doble salto
+        // Si est√° en el suelo, se resetea el doble salto
         if (isGrounded)
         {
             doubleJumpUsed = false;
@@ -69,7 +86,6 @@ public class PlayerController : MonoBehaviour
             }
             else if (doubleJumpActive && !doubleJumpUsed)
             {
-                // Opcional: Resetea la velocidad vertical para un salto m·s uniforme
                 rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 doubleJumpUsed = true;
@@ -78,12 +94,32 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            // Resetea isJumping tras empezar la animaciÛn de salto
             AnimatorStateInfo st = animator.GetCurrentAnimatorStateInfo(0);
             if (st.IsName("Jump") || st.IsName("Jump 1"))
             {
                 animator.SetBool("isJumping", false);
             }
+        }
+    }
+
+    // Detectar si est√° sobre hielo
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.collider.CompareTag("Ice"))
+        {
+            onIce = true;
+        }
+        else
+        {
+            onIce = false;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.CompareTag("Ice"))
+        {
+            onIce = false;
         }
     }
 }
