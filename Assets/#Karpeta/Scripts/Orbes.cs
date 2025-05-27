@@ -1,7 +1,12 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class DoubleJumpPickup : MonoBehaviour
+public class Orbes : MonoBehaviour
 {
+    public GameObject particulasEscultura;
+    public CameraFollow cameraFollow;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -10,6 +15,8 @@ public class DoubleJumpPickup : MonoBehaviour
             if (player != null)
             {
                 player.doubleJumpActive = true;
+                cameraFollow.particulasEscultura = particulasEscultura;
+                cameraFollow.EnfocarTemporalmente();
             }
             Destroy(gameObject);
         }

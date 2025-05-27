@@ -3,69 +3,65 @@ using System.Collections;
 
 public class CinematicaInicial : MonoBehaviour
 {
-    public Camera camera1;
-    public Camera camera2;
-    public Transform puntoInicio;
+    [Header("Cámaras")]
+    public Camera camCinematica1;
+    public Camera camCinematica2;
+    public Camera camGameplay1;
+    public Camera camGameplay2;
 
-    public Transform jugador; // Asigna el jugador aquí
-    public float offsetZ = -10f; // Para cámara ortográfica
+    [Header("Movimiento entre puntos")]
+    public Transform puntoA; // Inicio de la cinemática
+    public Transform puntoB; // Fin de la cinemática
     public float duracion = 3f;
 
-    public CameraFollow cameraFollow; // Script que sigue al jugador
+    [Header("Control del menú")]
     public MenuManager menuManager;
-
-    private bool yaEjecutado = false;
 
     void Start()
     {
-        cameraFollow.enabled = false;
+        // Activar cámaras de cinemática, desactivar cámaras de gameplay
+        camCinematica1.gameObject.SetActive(true);
+        camCinematica2.gameObject.SetActive(true);
+        camGameplay1.gameObject.SetActive(false);
+        camGameplay2.gameObject.SetActive(false);
 
-        if (camera1 != null) camera1.transform.position = puntoInicio.position;
-        if (camera2 != null) camera2.transform.position = puntoInicio.position;
+        // Colocar cámaras en puntoA
+        camCinematica1.transform.position = puntoA.position;
+        camCinematica2.transform.position = puntoA.position;
     }
 
     public void IniciarCinematica()
     {
-        if (!yaEjecutado)
-        {
-            yaEjecutado = true;
-            StartCoroutine(MoverCamaras());
-        }
+        StartCoroutine(MoverCamarasEntrePuntos());
     }
 
-    private IEnumerator MoverCamaras()
+    private IEnumerator MoverCamarasEntrePuntos()
     {
-        // Posición final detrás del jugador
-        Vector3 destino = new Vector3(jugador.position.x, jugador.position.y, offsetZ);
-
-        Vector3 origen1 = camera1 != null ? camera1.transform.position : Vector3.zero;
-        Vector3 origen2 = camera2 != null ? camera2.transform.position : Vector3.zero;
+        Vector3 origen = puntoA.position;
+        Vector3 destino = puntoB.position;
 
         float t = 0f;
         while (t < duracion)
         {
             float factor = t / duracion;
-
-            if (camera1 != null)
-                camera1.transform.position = Vector3.Lerp(origen1, destino, factor);
-
-            if (camera2 != null)
-                camera2.transform.position = Vector3.Lerp(origen2, destino, factor);
-
+            camCinematica1.transform.position = Vector3.Lerp(origen, destino, factor);
+            camCinematica2.transform.position = Vector3.Lerp(origen, destino, factor);
             t += Time.unscaledDeltaTime;
             yield return null;
         }
 
-        if (camera1 != null)
-            camera1.transform.position = destino;
+        // Asegurar posición exacta al final
+        camCinematica1.transform.position = destino;
+        camCinematica2.transform.position = destino;
 
-        if (camera2 != null)
-            camera2.transform.position = destino;
+        yield return new WaitForSeconds(0.5f);
 
-        // Activar el seguimiento del jugador
-        if (cameraFollow != null)
-            cameraFollow.enabled = true;
+        // Cambiar a cámaras de gameplay
+        camCinematica1.gameObject.SetActive(false);
+        camCinematica2.gameObject.SetActive(false);
+        camGameplay1.gameObject.SetActive(true);
+        camGameplay2.gameObject.SetActive(true);
 
-        menuManager.ComenzarJuego();
+        menuManager.ComenzarJuego(); // Reanuda el juego
     }
 }
