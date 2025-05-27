@@ -8,6 +8,7 @@ public class MenuManager : MonoBehaviour
     public GameObject menuOpciones;
     public GameObject menuPausa;
     public GameObject confirmacionSalida;
+    public CinematicaInicial cinematicaInicial;
 
     private bool isPaused = false;
 
@@ -53,8 +54,9 @@ public class MenuManager : MonoBehaviour
     }
     public void ComenzarJuego()
     {
-        Time.timeScale = 1f;
         menuInicio.SetActive(false);
+        cinematicaInicial.IniciarCinematica();
+        Time.timeScale = 1f;
     }
 
     public void AbrirOpciones()

@@ -1,16 +1,17 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BridgeBlockController : MonoBehaviour
 {
-    [Header("Configuración del puente")]
+    [Header("ConfiguraciÃ³n del puente")]
     public float blockRiseHeight = 2f;         // Altura que suben los bloques
     public float blockSpeed = 1f;              // Velocidad de subida/bajada
     public float timeBetweenBlocks = 1f;       // Tiempo entre bloques
 
     [Header("Opciones")]
-    public bool autoStart = false;             // ¿Se activa automáticamente?
+    public bool autoStart = false;             // Â¿Se activa automÃ¡ticamente?
+    public bool reverseOrder = false;          // ðŸ”„ Activar orden inverso
 
     private List<Transform> blocks = new List<Transform>();
     private Queue<int> activeBlocks = new Queue<int>();
@@ -33,7 +34,7 @@ public class BridgeBlockController : MonoBehaviour
         }
     }
 
-    // Este método lo puede llamar un botón externo
+    // Este mÃ©todo lo puede llamar un botÃ³n externo
     public void ActivateBridge()
     {
         if (!isRunning)
@@ -45,7 +46,8 @@ public class BridgeBlockController : MonoBehaviour
 
     private IEnumerator AnimateBridge()
     {
-        int currentIndex = 0;
+        int count = blocks.Count;
+        int currentIndex = reverseOrder ? count - 1 : 0;
 
         while (true)
         {
@@ -55,7 +57,7 @@ public class BridgeBlockController : MonoBehaviour
             StartCoroutine(MoveBlock(currentBlock, Vector3.up * blockRiseHeight));
             activeBlocks.Enqueue(currentIndex);
 
-            // Si ya hay más de 2 bloques activos, hundir el más antiguo
+            // Si ya hay mÃ¡s de 2 bloques activos, hundir el mÃ¡s antiguo
             if (activeBlocks.Count > 2)
             {
                 int indexToSink = activeBlocks.Dequeue();
@@ -64,7 +66,11 @@ public class BridgeBlockController : MonoBehaviour
             }
 
             yield return new WaitForSeconds(timeBetweenBlocks);
-            currentIndex = (currentIndex + 1) % blocks.Count;
+
+            if (reverseOrder)
+                currentIndex = (currentIndex - 1 + count) % count;
+            else
+                currentIndex = (currentIndex + 1) % count;
         }
     }
 
@@ -84,3 +90,4 @@ public class BridgeBlockController : MonoBehaviour
         block.position = endPos;
     }
 }
+

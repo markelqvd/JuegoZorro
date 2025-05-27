@@ -5,6 +5,7 @@ using UnityEngine;
 public class BridgeButton : MonoBehaviour
 {
     public BridgeBlockController bridgeToActivate;
+    public BridgeBlockController bridgeToRotate;
     public CameraFollow cameraFollow;          // Referencia a tu script CameraFollow
     public Transform puntoDeFoco;              // El foco temporal sobre el puente
 
@@ -13,6 +14,7 @@ public class BridgeButton : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             bridgeToActivate.ActivateBridge();
+            bridgeToRotate.reverseOrder = true;
 
             if (cameraFollow != null && puntoDeFoco != null)
             {

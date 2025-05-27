@@ -14,6 +14,12 @@ public class CameraFollow : MonoBehaviour
     [HideInInspector]
     public bool camaraOcupada = false;
 
+    void Start()
+    {
+        // Desactivar para no interferir en la cinemática
+        this.enabled = false;
+    }
+
     private void LateUpdate()
     {
         if (!camaraOcupada)
