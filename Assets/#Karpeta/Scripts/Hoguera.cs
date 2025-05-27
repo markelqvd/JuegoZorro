@@ -26,8 +26,8 @@ public class Hoguera : MonoBehaviour
     void Update()
     {
         // Si ya está encendida, ocultamos la UI aunque el jugador esté en el trigger
-        if (encendida)
-            panelTeclaE.SetActive(false);
+        //if (encendida)
+            //panelTeclaE.SetActive(false);
 
         if (puedeEncender && Input.GetKeyDown(KeyCode.E) && !encendida)
         {
@@ -38,6 +38,8 @@ public class Hoguera : MonoBehaviour
     private IEnumerator EncenderHoguera()
     {
         encendida = true;
+
+        panelTeclaE.SetActive(false);
 
         // Inmovilizamos al jugador durante el proceso de guardado
         DesactivarMovimientoJugador();
