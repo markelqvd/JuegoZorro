@@ -200,7 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2086116}
   m_Layer: 0
-  m_Name: Tutoriales
+  m_Name: CanvasTutoriales
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,14 +214,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086115}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06494491, y: 0.2942849, z: 0.83462256}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.06494522, y: 0.29428482, z: 0.8346224}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1056437317}
   - {fileID: 1928627647}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1427324983}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3396830
 PrefabInstance:
@@ -3452,7 +3452,7 @@ GameObject:
   - component: {fileID: 26538460}
   - component: {fileID: 26538466}
   m_Layer: 0
-  m_Name: Plane (2)
+  m_Name: Agua_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3728,12 +3728,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 26538459}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.9463, y: 0.128, z: -4.8608}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -926.162, y: -524.1141, z: -29.453115}
   m_LocalScale: {x: 4.1127977, y: 1, z: 1.4701}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 257704169}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &26538466
 MonoBehaviour:
@@ -33391,7 +33391,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 216940983}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3.851141, y: -2.4809678, z: -27.01338}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -33402,7 +33402,7 @@ Transform:
   - {fileID: 1325018223}
   - {fileID: 118994597}
   - {fileID: 1156803703}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1290253888}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &217288244
 PrefabInstance:
@@ -37926,6 +37926,44 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47b91c8b4f282b84a87d6e167efc70cd, type: 3}
+--- !u!1 &257704168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 257704169}
+  m_Layer: 0
+  m_Name: Agua
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &257704169
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257704168}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 953.1083, y: 524.24207, z: 24.592316}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 26538465}
+  - {fileID: 2119777273}
+  - {fileID: 814628055}
+  - {fileID: 1763909247}
+  - {fileID: 1372372362}
+  - {fileID: 493289353}
+  - {fileID: 748920122}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &258096721 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9f6b5ac6ca952bf4b91bbc9a13368686, type: 3}
@@ -66331,7 +66369,7 @@ GameObject:
   - component: {fileID: 493289348}
   - component: {fileID: 493289347}
   m_Layer: 0
-  m_Name: Plane (5)
+  m_Name: ZonaMuerte
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66620,12 +66658,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 493289346}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.9744, y: 0.9, z: -37.3833}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -927.13385, y: -523.34204, z: -61.975616}
   m_LocalScale: {x: 5.963999, y: 1, z: 4.417806}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 257704169}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &494193100 stripped
 GameObject:
@@ -102948,7 +102986,7 @@ GameObject:
   - component: {fileID: 748920117}
   - component: {fileID: 748920116}
   m_Layer: 0
-  m_Name: Plane (6)
+  m_Name: ZonaMuerteInferior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103237,12 +103275,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 748920115}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.9744, y: -10.56, z: -30.0283}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -927.13385, y: -534.80206, z: -54.620613}
   m_LocalScale: {x: 5.963999, y: 1, z: 6.090733}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 257704169}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &749199815
 PrefabInstance:
@@ -110427,7 +110465,7 @@ GameObject:
   - component: {fileID: 814628050}
   - component: {fileID: 814628056}
   m_Layer: 0
-  m_Name: Plane (3)
+  m_Name: Agua_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110704,11 +110742,11 @@ Transform:
   m_GameObject: {fileID: 814628048}
   serializedVersion: 2
   m_LocalRotation: {x: 0.376271, y: -0, z: -0, w: 0.9265097}
-  m_LocalPosition: {x: 24.9797, y: 2.373, z: -7.079}
+  m_LocalPosition: {x: -928.1286, y: -521.8691, z: -31.671316}
   m_LocalScale: {x: 6.0510244, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 257704169}
   m_LocalEulerAnglesHint: {x: 44.206, y: 0, z: 0}
 --- !u!114 &814628056
 MonoBehaviour:
@@ -124999,14 +125037,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885282284}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1294593461}
   - {fileID: 1038929850}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1427324983}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -168616,7 +168654,7 @@ RectTransform:
   - {fileID: 595756884}
   - {fileID: 1603262914}
   - {fileID: 182122465}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1427324983}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -180419,7 +180457,7 @@ GameObject:
   - component: {fileID: 1287023360}
   - component: {fileID: 1287023361}
   m_Layer: 0
-  m_Name: PivotCamera (1)
+  m_Name: CameraCinematica
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180654,6 +180692,7 @@ Transform:
   - {fileID: 1252181445}
   - {fileID: 853313133}
   - {fileID: 12931371}
+  - {fileID: 216940984}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1290310832 stripped
@@ -194898,7 +194937,7 @@ GameObject:
   - component: {fileID: 1372372357}
   - component: {fileID: 1372372363}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Agua_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -195174,12 +195213,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1372372356}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.9744, y: 1.76, z: -37.325}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -927.13385, y: -522.48206, z: -61.917316}
   m_LocalScale: {x: 5.963999, y: 1, z: 4.4094725}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 257704169}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1372372363
 MonoBehaviour:
@@ -202776,6 +202815,41 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1684550261}
   m_SourcePrefab: {fileID: 100100000, guid: 9f6b5ac6ca952bf4b91bbc9a13368686, type: 3}
+--- !u!1 &1427324982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1427324983}
+  m_Layer: 0
+  m_Name: Canvases
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1427324983
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427324982}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1528316501}
+  - {fileID: 1190321299}
+  - {fileID: 2086116}
+  - {fileID: 885282288}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1427842248 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e08ad07ee22a84240ba8a44599d547ac, type: 3}
@@ -214981,7 +215055,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1705388236}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1427324983}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -236511,8 +236585,8 @@ Transform:
   m_GameObject: {fileID: 1703823476}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.2125521, y: -0.8378111, z: -2.4668198}
-  m_LocalScale: {x: 1, y: 1, z: 3.559718}
+  m_LocalPosition: {x: -2.2177, y: -0.8378111, z: -2.4668198}
+  m_LocalScale: {x: 3.0102, y: 1, z: 3.559718}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1928627647}
@@ -242968,7 +243042,7 @@ GameObject:
   - component: {fileID: 1763909242}
   - component: {fileID: 1763909248}
   m_Layer: 0
-  m_Name: Plane (4)
+  m_Name: Agua_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -243245,11 +243319,11 @@ Transform:
   m_GameObject: {fileID: 1763909240}
   serializedVersion: 2
   m_LocalRotation: {x: 0.376271, y: -0, z: -0, w: 0.9265097}
-  m_LocalPosition: {x: -9.9434, y: 2.373, z: -7.079}
+  m_LocalPosition: {x: -963.0517, y: -521.8691, z: -31.671316}
   m_LocalScale: {x: 7.7918, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 257704169}
   m_LocalEulerAnglesHint: {x: 44.206, y: 0, z: 0}
 --- !u!114 &1763909248
 MonoBehaviour:
@@ -288293,7 +288367,7 @@ GameObject:
   - component: {fileID: 2119777268}
   - component: {fileID: 2119777274}
   m_Layer: 0
-  m_Name: Plane (1)
+  m_Name: Agua_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -288569,12 +288643,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2119777267}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 28.7386, y: 0.803, z: -6.53}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -924.3697, y: -523.4391, z: -31.122316}
   m_LocalScale: {x: 4.960614, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 257704169}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2119777274
 MonoBehaviour:
@@ -292314,25 +292388,15 @@ SceneRoots:
   - {fileID: 565834979}
   - {fileID: 1909307640}
   - {fileID: 1287023360}
+  - {fileID: 538680450}
   - {fileID: 506032170}
   - {fileID: 1620985815}
-  - {fileID: 1528316501}
-  - {fileID: 1190321299}
+  - {fileID: 954760648}
+  - {fileID: 1427324983}
   - {fileID: 2033816656}
   - {fileID: 42715917}
   - {fileID: 2006406871}
   - {fileID: 1290253888}
-  - {fileID: 2119777273}
-  - {fileID: 26538465}
-  - {fileID: 1372372362}
-  - {fileID: 493289353}
-  - {fileID: 748920122}
-  - {fileID: 814628055}
-  - {fileID: 1763909247}
-  - {fileID: 266670896}
-  - {fileID: 954760648}
-  - {fileID: 885282288}
-  - {fileID: 538680450}
+  - {fileID: 257704169}
   - {fileID: 596004081}
-  - {fileID: 2086116}
-  - {fileID: 216940984}
+  - {fileID: 266670896}
