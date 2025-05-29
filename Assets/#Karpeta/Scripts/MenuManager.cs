@@ -12,6 +12,10 @@ public class MenuManager : MonoBehaviour
 
     private bool isPaused = false;
 
+    // NUEVO: Referencias para el checkbox
+    public Toggle miToggle;
+    public GameObject objetoTarget;
+
     void Start()
     {
         Time.timeScale = 0f; // Asegurarse de que el juego comienza sin estar pausado
@@ -19,20 +23,24 @@ public class MenuManager : MonoBehaviour
         menuOpciones.SetActive(false);
         menuPausa.SetActive(false);
         confirmacionSalida.SetActive(false);
-        //UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
-        //UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(menuInicio.GetComponentInChildren<Button>().gameObject);
-    
+
+        // NUEVO: Asignar listener al Toggle
+        if (miToggle != null && objetoTarget != null)
+        {
+            miToggle.onValueChanged.AddListener(OnToggleCambiado);
+            objetoTarget.SetActive(miToggle.isOn); // Estado inicial
+        }
     }
+
     void Update()
     {
-        // Detectar si se presiona la tecla Escape
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!menuPausa.activeSelf) // Si el menú de pausa NO está activo, abrirlo
+            if (!menuPausa.activeSelf)
             {
                 AbrirMenuPausa();
             }
-            else // Si ya está activo, cerrarlo
+            else
             {
                 CerrarMenuPausa();
             }
@@ -42,16 +50,17 @@ public class MenuManager : MonoBehaviour
     public void AbrirMenuPausa()
     {
         menuPausa.SetActive(true);
-        Time.timeScale = 0f; // Pausar el juego
+        Time.timeScale = 0f;
         isPaused = true;
     }
 
     public void CerrarMenuPausa()
     {
         menuPausa.SetActive(false);
-        Time.timeScale = 1f; // Reanudar el juego
+        Time.timeScale = 1f;
         isPaused = false;
     }
+
     public void ComenzarJuego()
     {
         menuInicio.SetActive(false);
@@ -113,5 +122,12 @@ public class MenuManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    // NUEVO: Método para manejar el cambio del checkbox
+    public void OnToggleCambiado(bool estado)
+    {
+        if (objetoTarget != null)
+            objetoTarget.SetActive(estado);
     }
 }

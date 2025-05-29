@@ -1,11 +1,13 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class TutorialTrigger : MonoBehaviour
 {
     public GameObject panelTutorial;             // Asigna el panel de UI en el inspector
-    public TextMeshProUGUI textoTutorial;        // Asigna el texto dentro del panel
+    public Text textoTutorial;        // Asigna el texto dentro del panel
     public string mensajeTutorial;               // El mensaje que quieres mostrar
     public float duracion = 3f;                  // Cuánto tiempo mostrar el mensaje
 
