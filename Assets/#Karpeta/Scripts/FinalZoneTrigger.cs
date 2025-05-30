@@ -9,6 +9,8 @@ public class FinalZoneTrigger : MonoBehaviour
     public GameObject camara;             // Cámara que se moverá (opcional)
     public MonoBehaviour controlJugador;  // Referencia al script de control del jugador (opcional)
 
+    public CamerasPathFollower camerasPathFollower;
+
     private bool enZonaFinal = false;
     private bool creditosIniciados = false;
 
@@ -28,11 +30,11 @@ public class FinalZoneTrigger : MonoBehaviour
             creditosIniciados = true;
             panelTecla.SetActive(false);
             creditos.SetActive(true);
-
-            if (camara != null)
+            camerasPathFollower.IniciarMovimiento();
+            /*if (camara != null)
             {
                 camara.SetActive(true); // Por si el movimiento de cámara está en otro objeto habilitable
-            }
+            }*/
 
             if (controlJugador != null)
             {

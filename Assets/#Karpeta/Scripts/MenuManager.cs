@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class MenuManager : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class MenuManager : MonoBehaviour
     public GameObject menuPausa;
     public GameObject confirmacionSalida;
     public CinematicaInicial cinematicaInicial;
+
+    public Slider sliderVolumen;
+    public AudioMixer audioMixer;
 
     private bool isPaused = false;
 
@@ -30,6 +34,17 @@ public class MenuManager : MonoBehaviour
             miToggle.onValueChanged.AddListener(OnToggleCambiado);
             objetoTarget.SetActive(miToggle.isOn); // Estado inicial
         }
+
+        if (sliderVolumen != null)
+        {
+            float volumenGuardado;
+            if (audioMixer.GetFloat("Volume", out volumenGuardado))
+            {
+                sliderVolumen.value = Mathf.Pow(10f, volumenGuardado / 20f); // de dB a lineal
+            }
+
+            sliderVolumen.onValueChanged.AddListener(CambiarVolumen);
+        }
     }
 
     void Update()
@@ -45,6 +60,12 @@ public class MenuManager : MonoBehaviour
                 CerrarMenuPausa();
             }
         }
+    }
+
+    public void CambiarVolumen(float valor)
+    {
+        // Convierte el valor lineal [0,1] a logarítmico en decibelios [-80, 0]
+        audioMixer.SetFloat("Volume", Mathf.Log10(valor) * 20);
     }
 
     public void AbrirMenuPausa()
